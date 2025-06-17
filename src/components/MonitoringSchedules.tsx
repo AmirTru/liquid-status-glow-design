@@ -35,29 +35,29 @@ const MonitoringSchedules = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'IDLE': return 'bg-blue-50/80 border-blue-200/50';
-      case 'NEVER RUN': return 'bg-purple-50/80 border-purple-200/50';
-      case 'FAILED': return 'bg-red-50/80 border-red-200/50';
-      default: return 'bg-gray-50/80 border-gray-200/50';
+      case 'IDLE': return 'bg-blue-50/20 border-blue-200/30';
+      case 'NEVER RUN': return 'bg-purple-50/20 border-purple-200/30';
+      case 'FAILED': return 'bg-red-50/20 border-red-200/30';
+      default: return 'bg-gray-50/20 border-gray-200/30';
     }
   };
 
   const getStatusBadgeColor = (status: string) => {
     switch (status) {
-      case 'IDLE': return 'bg-blue-100 text-blue-700';
-      case 'NEVER RUN': return 'bg-purple-100 text-purple-700';
-      case 'FAILED': return 'bg-red-100 text-red-700';
-      default: return 'bg-gray-100 text-gray-700';
+      case 'IDLE': return 'bg-blue-100/80 text-blue-700 border-blue-200/50';
+      case 'NEVER RUN': return 'bg-purple-100/80 text-purple-700 border-purple-200/50';
+      case 'FAILED': return 'bg-red-100/80 text-red-700 border-red-200/50';
+      default: return 'bg-gray-100/80 text-gray-700 border-gray-200/50';
     }
   };
 
   return (
-    <div className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-3xl p-6 shadow-xl shadow-gray-900/5 hover:shadow-2xl hover:shadow-gray-900/10 transition-all duration-500">
+    <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 shadow-2xl shadow-gray-900/10 hover:shadow-3xl hover:shadow-gray-900/15 transition-all duration-700 hover:bg-white/15">
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-3">
           <h2 className="text-xl font-semibold text-gray-900 tracking-tight">Monitoring Schedules</h2>
-          <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+          <div className="flex items-center space-x-2 bg-green-100/80 backdrop-blur-xl px-3 py-1 rounded-full border border-green-200/50">
+            <div className="w-2 h-2 bg-green-500 rounded-full shadow-lg shadow-green-500/50"></div>
             <span className="text-green-600 text-sm font-medium">Active</span>
           </div>
         </div>
@@ -67,33 +67,33 @@ const MonitoringSchedules = () => {
         {schedules.map((schedule, index) => (
           <div 
             key={index}
-            className={`${getStatusColor(schedule.status)} backdrop-blur-sm border rounded-2xl p-4 hover:scale-105 transition-all duration-300 shadow-sm`}
+            className={`${getStatusColor(schedule.status)} backdrop-blur-xl border rounded-2xl p-4 hover:scale-[1.02] transition-all duration-500 shadow-lg hover:shadow-xl`}
           >
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-gray-900 font-medium">{schedule.name}</h3>
-              <span className={`text-xs px-2 py-1 rounded-full font-medium ${getStatusBadgeColor(schedule.status)}`}>
+              <h3 className="text-gray-900 font-medium text-sm">{schedule.name}</h3>
+              <span className={`text-xs px-2 py-1 rounded-full font-medium backdrop-blur-xl border ${getStatusBadgeColor(schedule.status)}`}>
                 {schedule.status}
               </span>
             </div>
             
             <div className="flex items-center space-x-4 text-xs text-gray-600 mb-3 font-medium">
-              <span className="flex items-center space-x-1">
+              <span className="flex items-center space-x-1 bg-white/20 backdrop-blur-xl px-2 py-1 rounded-full border border-white/30">
                 <Clock className="w-3 h-3" />
                 <span>{schedule.interval}</span>
               </span>
             </div>
             
-            <div className="flex items-center justify-between text-xs text-gray-500 mb-4 font-medium">
+            <div className="flex items-center justify-between text-xs text-gray-500 mb-3 font-medium">
               <span>TESTS</span>
               <span>SCHEDULE</span>
             </div>
             
-            <div className="flex items-center justify-between text-sm text-gray-900 mb-4 font-mono">
+            <div className="flex items-center justify-between text-sm text-gray-900 mb-4 font-mono bg-white/10 backdrop-blur-xl px-3 py-2 rounded-xl border border-white/20">
               <span>{schedule.tests}</span>
               <span>{schedule.schedule}</span>
             </div>
             
-            <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 flex items-center justify-center space-x-2">
+            <button className="w-full bg-gradient-to-r from-blue-500/80 to-blue-600/80 backdrop-blur-xl hover:from-blue-600/90 hover:to-blue-700/90 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 flex items-center justify-center space-x-2 border border-blue-400/30">
               <Play className="w-4 h-4" />
               <span>Trigger Now</span>
             </button>
