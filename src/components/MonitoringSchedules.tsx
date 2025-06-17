@@ -35,30 +35,30 @@ const MonitoringSchedules = () => {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'IDLE': return 'from-blue-500/20 to-cyan-500/20 border-blue-500/30';
-      case 'NEVER RUN': return 'from-purple-500/20 to-pink-500/20 border-purple-500/30';
-      case 'FAILED': return 'from-red-500/20 to-orange-500/20 border-red-500/30';
-      default: return 'from-gray-500/20 to-gray-500/20 border-gray-500/30';
+      case 'IDLE': return 'bg-blue-50/80 border-blue-200/50';
+      case 'NEVER RUN': return 'bg-purple-50/80 border-purple-200/50';
+      case 'FAILED': return 'bg-red-50/80 border-red-200/50';
+      default: return 'bg-gray-50/80 border-gray-200/50';
     }
   };
 
   const getStatusBadgeColor = (status: string) => {
     switch (status) {
-      case 'IDLE': return 'bg-blue-500/20 text-blue-300';
-      case 'NEVER RUN': return 'bg-purple-500/20 text-purple-300';
-      case 'FAILED': return 'bg-red-500/20 text-red-300';
-      default: return 'bg-gray-500/20 text-gray-300';
+      case 'IDLE': return 'bg-blue-100 text-blue-700';
+      case 'NEVER RUN': return 'bg-purple-100 text-purple-700';
+      case 'FAILED': return 'bg-red-100 text-red-700';
+      default: return 'bg-gray-100 text-gray-700';
     }
   };
 
   return (
-    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:bg-white/10">
+    <div className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-3xl p-6 shadow-xl shadow-gray-900/5 hover:shadow-2xl hover:shadow-gray-900/10 transition-all duration-500">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center space-x-2">
-          <h2 className="text-xl font-semibold text-white">Monitoring Schedules</h2>
+          <h2 className="text-xl font-semibold text-gray-900 tracking-tight">Monitoring Schedules</h2>
           <div className="flex items-center space-x-1">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-green-400 text-sm">Active</span>
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span className="text-green-600 text-sm font-medium">Active</span>
           </div>
         </div>
       </div>
@@ -67,33 +67,33 @@ const MonitoringSchedules = () => {
         {schedules.map((schedule, index) => (
           <div 
             key={index}
-            className={`bg-gradient-to-r ${getStatusColor(schedule.status)} backdrop-blur-sm border rounded-2xl p-4 hover:scale-105 transition-all duration-300`}
+            className={`${getStatusColor(schedule.status)} backdrop-blur-sm border rounded-2xl p-4 hover:scale-105 transition-all duration-300 shadow-sm`}
           >
             <div className="flex items-center justify-between mb-3">
-              <h3 className="text-white font-medium">{schedule.name}</h3>
-              <span className={`text-xs px-2 py-1 rounded-full ${getStatusBadgeColor(schedule.status)}`}>
+              <h3 className="text-gray-900 font-medium">{schedule.name}</h3>
+              <span className={`text-xs px-2 py-1 rounded-full font-medium ${getStatusBadgeColor(schedule.status)}`}>
                 {schedule.status}
               </span>
             </div>
             
-            <div className="flex items-center space-x-4 text-xs text-blue-200/70 mb-3">
+            <div className="flex items-center space-x-4 text-xs text-gray-600 mb-3 font-medium">
               <span className="flex items-center space-x-1">
                 <Clock className="w-3 h-3" />
                 <span>{schedule.interval}</span>
               </span>
             </div>
             
-            <div className="flex items-center justify-between text-xs text-blue-200/60 mb-4">
+            <div className="flex items-center justify-between text-xs text-gray-500 mb-4 font-medium">
               <span>TESTS</span>
               <span>SCHEDULE</span>
             </div>
             
-            <div className="flex items-center justify-between text-sm text-white mb-4">
-              <span className="font-mono">{schedule.tests}</span>
-              <span className="font-mono">{schedule.schedule}</span>
+            <div className="flex items-center justify-between text-sm text-gray-900 mb-4 font-mono">
+              <span>{schedule.tests}</span>
+              <span>{schedule.schedule}</span>
             </div>
             
-            <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-400 hover:to-red-400 text-white font-medium py-2 px-4 rounded-xl transition-all duration-300 hover:shadow-lg flex items-center justify-center space-x-2">
+            <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium py-2.5 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 flex items-center justify-center space-x-2">
               <Play className="w-4 h-4" />
               <span>Trigger Now</span>
             </button>

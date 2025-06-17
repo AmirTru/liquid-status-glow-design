@@ -11,7 +11,7 @@ const RecentTestRuns = () => {
       details: '3s',
       time: 'Just now',
       icon: CheckCircle,
-      color: 'from-green-500/20 to-emerald-500/20 border-green-500/30'
+      color: 'bg-green-50/80 border-green-200/50'
     },
     {
       name: '12 Hour Monitor',
@@ -20,15 +20,15 @@ const RecentTestRuns = () => {
       details: '3s',
       time: 'Just now',
       icon: XCircle,
-      color: 'from-red-500/20 to-pink-500/20 border-red-500/30'
+      color: 'bg-red-50/80 border-red-200/50'
     }
   ];
 
   return (
-    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:bg-white/10">
+    <div className="bg-white/70 backdrop-blur-xl border border-gray-200/50 rounded-3xl p-6 shadow-xl shadow-gray-900/5 hover:shadow-2xl hover:shadow-gray-900/10 transition-all duration-500">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-white">Recent Test Runs</h2>
-        <button className="text-blue-300 hover:text-blue-200 text-sm font-medium transition-colors">
+        <h2 className="text-xl font-semibold text-gray-900 tracking-tight">Recent Test Runs</h2>
+        <button className="text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors">
           View All
         </button>
       </div>
@@ -37,21 +37,21 @@ const RecentTestRuns = () => {
         {testRuns.map((test, index) => (
           <div 
             key={index}
-            className={`bg-gradient-to-r ${test.color} backdrop-blur-sm border rounded-2xl p-4 hover:scale-105 transition-all duration-300`}
+            className={`${test.color} backdrop-blur-sm border rounded-2xl p-4 hover:scale-105 transition-all duration-300 shadow-sm`}
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center space-x-2">
-                <test.icon className={`w-4 h-4 ${test.status === 'Success' ? 'text-green-400' : 'text-red-400'}`} />
-                <span className="text-blue-200/70 text-xs">{test.duration}</span>
+                <test.icon className={`w-4 h-4 ${test.status === 'Success' ? 'text-green-500' : 'text-red-500'}`} />
+                <span className="text-gray-600 text-xs font-medium">{test.duration}</span>
               </div>
-              <span className="text-blue-200/60 text-xs">{test.time}</span>
+              <span className="text-gray-500 text-xs font-medium">{test.time}</span>
             </div>
             
-            <h3 className="text-white font-medium mb-2">{test.name}</h3>
+            <h3 className="text-gray-900 font-medium mb-2">{test.name}</h3>
             
             <div className="flex items-center justify-between text-xs">
-              <span className="text-blue-200/70">{test.details} • {test.status}</span>
-              <div className={`w-2 h-2 rounded-full ${test.status === 'Success' ? 'bg-green-400' : 'bg-red-400'} animate-pulse`}></div>
+              <span className="text-gray-600 font-medium">{test.details} • {test.status}</span>
+              <div className={`w-2 h-2 rounded-full ${test.status === 'Success' ? 'bg-green-500' : 'bg-red-500'}`}></div>
             </div>
           </div>
         ))}
