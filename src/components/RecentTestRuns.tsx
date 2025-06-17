@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { CheckCircle, XCircle, Clock } from 'lucide-react';
+import { CheckCircle, XCircle, Clock, ArrowUpRight, Zap } from 'lucide-react';
 
 const RecentTestRuns = () => {
   const testRuns = [
@@ -11,7 +11,8 @@ const RecentTestRuns = () => {
       details: '3s',
       time: 'Just now',
       icon: CheckCircle,
-      color: 'bg-green-50/20 border-green-200/30'
+      color: 'bg-white/20 border-green-200/40',
+      iconColor: 'text-green-600'
     },
     {
       name: '12 Hour Monitor',
@@ -20,7 +21,8 @@ const RecentTestRuns = () => {
       details: '3s',
       time: 'Just now',
       icon: XCircle,
-      color: 'bg-red-50/20 border-red-200/30'
+      color: 'bg-white/20 border-red-200/40',
+      iconColor: 'text-red-600'
     },
     {
       name: '30 Minute Monitor',
@@ -29,7 +31,8 @@ const RecentTestRuns = () => {
       details: '1.2s',
       time: '2 min ago',
       icon: CheckCircle,
-      color: 'bg-green-50/20 border-green-200/30'
+      color: 'bg-white/20 border-green-200/40',
+      iconColor: 'text-green-600'
     },
     {
       name: 'Daily Health Check',
@@ -38,16 +41,44 @@ const RecentTestRuns = () => {
       details: '5.8s',
       time: '1 hour ago',
       icon: CheckCircle,
-      color: 'bg-green-50/20 border-green-200/30'
+      color: 'bg-white/20 border-green-200/40',
+      iconColor: 'text-green-600'
+    },
+    {
+      name: 'Security Scan',
+      duration: '@6h',
+      status: 'Success',
+      details: '12.4s',
+      time: '3 hours ago',
+      icon: CheckCircle,
+      color: 'bg-white/20 border-green-200/40',
+      iconColor: 'text-green-600'
+    },
+    {
+      name: 'Performance Test',
+      duration: '@1h',
+      status: 'Success',
+      details: '0.8s',
+      time: '45 min ago',
+      icon: CheckCircle,
+      color: 'bg-white/20 border-green-200/40',
+      iconColor: 'text-green-600'
     }
   ];
 
   return (
-    <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 shadow-2xl shadow-gray-900/10 hover:shadow-3xl hover:shadow-gray-900/15 transition-all duration-700 hover:bg-white/15">
+    <div className="bg-white/30 backdrop-blur-2xl border border-white/20 rounded-3xl p-6 shadow-2xl shadow-gray-900/5 hover:shadow-gray-900/10 transition-all duration-500 hover:bg-white/35">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-gray-900 tracking-tight">Recent Test Runs</h2>
-        <button className="text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors bg-white/20 backdrop-blur-xl px-4 py-2 rounded-full border border-white/30 hover:bg-white/30">
-          View All
+        <div className="flex items-center space-x-3">
+          <h2 className="text-xl font-bold text-gray-900 tracking-tight">Recent Test Runs</h2>
+          <div className="flex items-center space-x-1 bg-blue-50/60 backdrop-blur-xl px-3 py-1.5 rounded-xl border border-blue-200/50 shadow-sm">
+            <Zap className="w-3 h-3 text-blue-600" />
+            <span className="text-blue-700 text-sm font-semibold">{testRuns.length} runs</span>
+          </div>
+        </div>
+        <button className="flex items-center space-x-2 text-blue-600 hover:text-blue-700 text-sm font-semibold transition-all duration-200 bg-white/30 backdrop-blur-xl px-4 py-2.5 rounded-xl border border-white/30 hover:bg-white/40 hover:border-white/40 hover:scale-105 group">
+          <span>View All</span>
+          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </button>
       </div>
       
@@ -55,23 +86,36 @@ const RecentTestRuns = () => {
         {testRuns.map((test, index) => (
           <div 
             key={index}
-            className={`${test.color} backdrop-blur-xl border rounded-2xl p-4 hover:scale-[1.02] transition-all duration-500 shadow-lg hover:shadow-xl`}
+            className={`${test.color} backdrop-blur-xl border rounded-2xl p-4 hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl group relative overflow-hidden`}
           >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center space-x-2">
-                <div className={`w-6 h-6 rounded-full flex items-center justify-center ${test.status === 'Success' ? 'bg-green-500/20 border border-green-500/30' : 'bg-red-500/20 border border-red-500/30'} backdrop-blur-xl`}>
-                  <test.icon className={`w-3 h-3 ${test.status === 'Success' ? 'text-green-500' : 'text-red-500'}`} />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center space-x-2">
+                  <div className={`w-8 h-8 rounded-2xl flex items-center justify-center ${test.status === 'Success' ? 'bg-green-50/40 border border-green-200/40' : 'bg-red-50/40 border border-red-200/40'} backdrop-blur-xl shadow-sm`}>
+                    <test.icon className={`w-4 h-4 ${test.iconColor}`} />
+                  </div>
+                  <span className="text-gray-700 text-xs font-semibold bg-white/40 backdrop-blur-xl px-2.5 py-1.5 rounded-xl border border-white/30 shadow-sm">
+                    {test.duration}
+                  </span>
                 </div>
-                <span className="text-gray-600 text-xs font-medium bg-white/20 backdrop-blur-xl px-2 py-1 rounded-full border border-white/30">{test.duration}</span>
+                <span className="text-gray-600 text-xs font-medium bg-white/30 backdrop-blur-xl px-2.5 py-1 rounded-full border border-white/30">
+                  {test.time}
+                </span>
               </div>
-              <span className="text-gray-500 text-xs font-medium bg-white/20 backdrop-blur-xl px-2 py-1 rounded-full border border-white/30">{test.time}</span>
-            </div>
-            
-            <h3 className="text-gray-900 font-medium mb-3 text-sm">{test.name}</h3>
-            
-            <div className="flex items-center justify-between text-xs bg-white/10 backdrop-blur-xl px-3 py-2 rounded-xl border border-white/20">
-              <span className="text-gray-600 font-medium">{test.details} • {test.status}</span>
-              <div className={`w-2 h-2 rounded-full ${test.status === 'Success' ? 'bg-green-500' : 'bg-red-500'} shadow-lg ${test.status === 'Success' ? 'shadow-green-500/50' : 'shadow-red-500/50'}`}></div>
+              
+              <h3 className="text-gray-900 font-semibold mb-3 text-sm leading-tight">{test.name}</h3>
+              
+              <div className="flex items-center justify-between bg-white/30 backdrop-blur-xl px-3 py-2.5 rounded-xl border border-white/20 shadow-sm">
+                <div className="flex items-center space-x-2">
+                  <span className="text-gray-700 text-xs font-semibold">{test.details}</span>
+                  <span className="text-gray-500 text-xs">•</span>
+                  <span className={`text-xs font-semibold ${test.status === 'Success' ? 'text-green-700' : 'text-red-700'}`}>
+                    {test.status}
+                  </span>
+                </div>
+                <div className={`w-2 h-2 rounded-full ${test.status === 'Success' ? 'bg-green-500 shadow-green-500/50' : 'bg-red-500 shadow-red-500/50'} shadow-lg`}></div>
+              </div>
             </div>
           </div>
         ))}
