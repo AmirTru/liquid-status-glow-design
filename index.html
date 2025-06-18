@@ -1,24 +1,153 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>liquid-status-glow-design</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompass - Monitoring Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background -->
+    <div class="background">
+        <div class="gradient-overlay"></div>
+        <div class="light-effect light-1"></div>
+        <div class="light-effect light-2"></div>
+        <div class="light-effect light-3"></div>
+        <div class="texture-overlay"></div>
+    </div>
 
-    <meta property="og:title" content="liquid-status-glow-design" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="logo-glow"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Kompass</h1>
+                        <p>Monitoring Dashboard</p>
+                    </div>
+                </div>
+                
+                <div class="status-indicator">
+                    <div class="status-dot"></div>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                        <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                        <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                        <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                    </svg>
+                    <span>Online</span>
+                </div>
+            </div>
+        </div>
+    </header>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+    <!-- Main Content -->
+    <div class="container main-content">
+        <div class="dashboard-grid">
+            <!-- Recent Incidents -->
+            <div class="glass-card recent-incidents">
+                <div class="card-header">
+                    <div class="header-left">
+                        <h2>Recent Incidents</h2>
+                        <div class="alert-dot"></div>
+                    </div>
+                    <button class="view-all-btn">
+                        <span>View All</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 7h10v10"></path>
+                            <path d="M7 17 17 7"></path>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="incident-item">
+                    <div class="incident-gradient"></div>
+                    <div class="incident-content">
+                        <div class="incident-header">
+                            <div class="incident-icon-section">
+                                <div class="incident-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                                    </svg>
+                                </div>
+                                <span class="time-badge">12h ago</span>
+                            </div>
+                            <span class="status-badge">Just now</span>
+                        </div>
+                        
+                        <h3>Should have no stale vulnerability reports older than 36 hours</h3>
+                        
+                        <p class="description">Periodic Code Repo Scan Monitoring</p>
+                        
+                        <div class="code-block">
+                            <div class="code-content">
+                                <span class="error-label">Error:</span>
+                                <span class="error-text">Expected 0 stale vulnerability reports, but found 102 reports older than 36 hours. This indicates...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+            <!-- Bottom Row -->
+            <div class="bottom-row">
+                <!-- Monitoring Schedules -->
+                <div class="glass-card monitoring-schedules">
+                    <div class="card-header">
+                        <div class="header-left">
+                            <h2>Monitoring Schedules</h2>
+                            <div class="active-badge">
+                                <div class="active-dot"></div>
+                                <span>Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="schedules-list" id="schedulesList">
+                        <!-- Schedules will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Recent Test Runs -->
+                <div class="glass-card recent-test-runs">
+                    <div class="card-header">
+                        <div class="header-left">
+                            <h2>Recent Test Runs</h2>
+                            <div class="runs-badge">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
+                                </svg>
+                                <span>6 runs</span>
+                            </div>
+                        </div>
+                        <button class="view-all-btn">
+                            <span>View All</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 7h10v10"></path>
+                                <path d="M7 17 17 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="test-runs-grid" id="testRunsGrid">
+                        <!-- Test runs will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
