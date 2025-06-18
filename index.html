@@ -81,7 +81,7 @@
                                         <line x1="12" y1="17" x2="12.01" y2="17"></line>
                                     </svg>
                                 </div>
-                                <span class="time-badge">12h ago</span>
+                                <span class="interval-badge">@12h</span>
                             </div>
                             <span class="status-badge">Just now</span>
                         </div>
@@ -114,18 +114,27 @@
                         </div>
                     </div>
                     
-                    <div class="summary-stats">
-                        <div class="stat-item">
-                            <div class="stat-number">3</div>
-                            <div class="stat-label">Active Schedules</div>
+                    <div class="schedules-list">
+                        <div class="schedule-item">
+                            <div class="schedule-info">
+                                <div class="schedule-name">5 Minute Monitor</div>
+                                <div class="schedule-interval">@5min</div>
+                            </div>
+                            <div class="schedule-status success">IDLE</div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">16</div>
-                            <div class="stat-label">Total Tests</div>
+                        <div class="schedule-item">
+                            <div class="schedule-info">
+                                <div class="schedule-name">30 Minute Monitor</div>
+                                <div class="schedule-interval">@30min</div>
+                            </div>
+                            <div class="schedule-status warning">NEVER RUN</div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1</div>
-                            <div class="stat-label">Failed</div>
+                        <div class="schedule-item">
+                            <div class="schedule-info">
+                                <div class="schedule-name">12 Hour Monitor</div>
+                                <div class="schedule-interval">@12h</div>
+                            </div>
+                            <div class="schedule-status failure">FAILED</div>
                         </div>
                     </div>
                 </div>
@@ -151,18 +160,105 @@
                         </button>
                     </div>
                     
-                    <div class="summary-stats">
-                        <div class="stat-item">
-                            <div class="stat-number success">5</div>
-                            <div class="stat-label">Successful</div>
+                    <div class="test-runs-list">
+                        <div class="test-run-item">
+                            <div class="test-run-icon success">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="test-run-info">
+                                <div class="test-run-name">5 Minute Monitor</div>
+                                <div class="test-run-time">Just now • 3s</div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number failure">1</div>
-                            <div class="stat-label">Failed</div>
+                        <div class="test-run-item">
+                            <div class="test-run-icon failure">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="15" y1="9" x2="9" y2="15"></line>
+                                    <line x1="9" y1="9" x2="15" y2="15"></line>
+                                </svg>
+                            </div>
+                            <div class="test-run-info">
+                                <div class="test-run-name">12 Hour Monitor</div>
+                                <div class="test-run-time">Just now • 3s</div>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">2.4s</div>
-                            <div class="stat-label">Avg Duration</div>
+                        <div class="test-run-item">
+                            <div class="test-run-icon success">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22,4 12,14.01 9,11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div class="test-run-info">
+                                <div class="test-run-name">30 Minute Monitor</div>
+                                <div class="test-run-time">2 min ago • 1.2s</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Details & Coverage -->
+            <div class="glass-card test-details">
+                <div class="card-header">
+                    <div class="header-left">
+                        <h2>Test Details & Coverage</h2>
+                        <div class="view-toggle">
+                            <button class="toggle-btn active" data-view="grid">Grid</button>
+                            <button class="toggle-btn" data-view="list">List</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="test-details-content">
+                    <div class="test-group">
+                        <div class="test-group-header">
+                            <span class="group-badge">@5min</span>
+                            <span class="group-title">@5min (1 tests)</span>
+                        </div>
+                        <div class="test-item">
+                            <h4>should get API responses correctly and within performance budget</h4>
+                            <p class="test-file">overviewPageLoad.test.ts</p>
+                        </div>
+                    </div>
+
+                    <div class="test-group">
+                        <div class="test-group-header">
+                            <span class="group-badge">@12h</span>
+                            <span class="group-title">@12h (1 tests)</span>
+                        </div>
+                        <div class="test-item">
+                            <h4>should have no stale vulnerability reports older than 36 hours</h4>
+                            <p class="test-file">periodicCodeRepoScan.test.ts</p>
+                        </div>
+                    </div>
+
+                    <div class="test-group">
+                        <div class="test-group-header">
+                            <span class="group-badge">@30min</span>
+                            <span class="group-title">@30min (4 tests)</span>
+                        </div>
+                        <div class="test-grid">
+                            <div class="test-card">
+                                <h4>Code policy scan sanity check - Monorepo</h4>
+                                <p class="test-file">pr_scan/githubPrScans.monorepo.test.ts</p>
+                            </div>
+                            <div class="test-card">
+                                <h4>Open source scan sanity check - Monorepo</h4>
+                                <p class="test-file">pr_scan/githubPrScans.monorepo.test.ts</p>
+                            </div>
+                            <div class="test-card">
+                                <h4>Code policy scan sanity check - PokeAPI</h4>
+                                <p class="test-file">pr_scan/githubPrScans.test.ts</p>
+                            </div>
+                            <div class="test-card">
+                                <h4>Open source scan sanity check - PokeAPI</h4>
+                                <p class="test-file">pr_scan/githubPrScans.test.ts</p>
+                            </div>
                         </div>
                     </div>
                 </div>
