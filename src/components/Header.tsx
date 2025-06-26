@@ -1,12 +1,13 @@
 
 import React from 'react';
 import { Activity, Wifi } from 'lucide-react';
+import SearchBar from './SearchBar';
 
 const Header = () => {
   return (
     <header className="relative z-10 p-6">
       <div className="container mx-auto">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-6">
           <div className="flex items-center space-x-4">
             <div className="relative">
               <div className="w-14 h-14 bg-white/40 backdrop-blur-xl border border-white/20 rounded-2xl flex items-center justify-center shadow-xl shadow-blue-500/10 group-hover:shadow-blue-500/20 transition-all duration-300">
@@ -20,6 +21,11 @@ const Header = () => {
               </h1>
               <p className="text-gray-600 text-sm font-medium tracking-wide">Monitoring Dashboard</p>
             </div>
+          </div>
+          
+          {/* Search Bar */}
+          <div className="flex-1 max-w-lg">
+            <SearchBar />
           </div>
           
           <div className="flex items-center space-x-2 bg-white/40 backdrop-blur-xl border border-white/30 rounded-2xl px-5 py-3 shadow-xl shadow-green-500/5 hover:shadow-green-500/10 transition-all duration-300">
